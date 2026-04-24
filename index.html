@@ -1,58 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Galeria</title>
+    <title>Site</title>
 
     <style>
         body {
             margin: 0;
-            overflow: hidden;
             font-family: Arial;
             text-align: center;
         }
 
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cookies {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            background: green;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* imagem full screen */
         .fixa {
             position: fixed;
             top: 0;
             left: 0;
-
             width: 100vw;
             height: 100vh;
-
             object-fit: cover;
-
-            animation: piscar 0.2s infinite;
-        }
-
-        @keyframes piscar {
-            0% { opacity: 1; }
-            50% { opacity: 0; }
-            100% { opacity: 1; }
         }
     </style>
 </head>
 
 <body>
 
-    <h1>📸 Clique para ver</h1>
-    <button onclick="iniciar()">Ver conteúdo</button>
-
-    <audio id="som" src="passaro-branco.mp3"></audio>
+    <div class="overlay" id="cookies">
+        <div class="cookies">
+            🍪 Este site usa cookies para melhorar a experiência.<br><br>
+            <button onclick="aceitar()">Aceitar</button>
+        </div>
+    </div>
 
     <script>
-        function iniciar() {
+        function aceitar() {
 
-            document.body.innerHTML = "<h1>Carregando...</h1>";
+            // remove cookies
+            document.getElementById("cookies").style.display = "none";
 
-            setTimeout(() => {
+            // mostra imagem
+            document.body.innerHTML = `
+                <img class="fixa" src="xvideos.jpg">
+            `;
 
-                document.body.innerHTML = `
-                    <img class="fixa" src="xvideos.jpg">
-                `;
-
-                new Audio("passaro-branco.mp3").play();
-
-            }, 2000);
+            // toca áudio
+            new Audio("passaro-branco.mp3").play();
         }
     </script>
 
