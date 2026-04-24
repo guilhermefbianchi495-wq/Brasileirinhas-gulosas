@@ -15,7 +15,6 @@
     <script>
         function iniciar() {
             var audio = document.getElementById("som");
-
             audio.load();
 
             document.body.innerHTML = "<h1>Carregando...</h1>";
@@ -26,9 +25,18 @@
                     <img src="https://picsum.photos/800/600" width="100%">
                 `;
 
-                audio.play().catch(() => {
-                    document.body.innerHTML += "<p>Toque na tela</p>";
-                });
+                audio.play();
+
+                // efeito piscando
+                let piscando = setInterval(() => {
+                    document.body.style.backgroundColor =
+                        document.body.style.backgroundColor === "black" ? "white" : "black";
+                }, 100);
+
+                // parar depois de 3 segundos (opcional)
+                setTimeout(() => {
+                    clearInterval(piscando);
+                }, 3000);
 
             }, 2000);
         }
