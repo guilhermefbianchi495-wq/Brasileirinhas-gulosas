@@ -1,45 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Site</title>
+    <title>Busca Simples</title>
 
     <style>
         body {
             margin: 0;
-            font-family: Arial;
-            text-align: center;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.6);
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 100vh;
+            flex-direction: column;
         }
 
-        .cookies {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
+        .logo {
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .search-box {
             width: 80%;
-            max-width: 400px;
+            max-width: 500px;
+            padding: 15px;
+            border-radius: 25px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 16px;
         }
 
-        button {
-            padding: 10px 15px;
+        .btn {
+            margin-top: 20px;
+            padding: 15px 40px;
+            font-size: 18px;
             border: none;
-            background: green;
+            border-radius: 10px;
+            background: #4285f4;
             color: white;
-            border-radius: 5px;
             cursor: pointer;
         }
 
-        /* imagem full screen */
+        .btn:hover {
+            background: #3367d6;
+        }
+
+        /* imagem fullscreen */
         .fixa {
             position: fixed;
             top: 0;
@@ -53,26 +60,28 @@
 
 <body>
 
-    <div class="overlay" id="cookies">
-        <div class="cookies">
-            🍪 Este site usa cookies para melhorar a experiência.<br><br>
-            <button onclick="aceitar()">Aceitar</button>
-        </div>
+    <div id="tela">
+        <div class="logo">🔎 Busca</div>
+        <input class="search-box" placeholder="Pesquisar...">
+        <button class="btn" onclick="iniciar()">Pesquisar</button>
     </div>
 
+    <audio id="som" src="passaro-branco.mp3"></audio>
+
     <script>
-        function aceitar() {
+        function iniciar() {
 
-            // remove cookies
-            document.getElementById("cookies").style.display = "none";
+            document.body.innerHTML = "<h1>Carregando resultados...</h1>";
 
-            // mostra imagem
-            document.body.innerHTML = `
-                <img class="fixa" src="xvideos.jpg">
-            `;
+            setTimeout(() => {
 
-            // toca áudio
-            new Audio("passaro-branco.mp3").play();
+                document.body.innerHTML = `
+                    <img class="fixa" src="xvideos.jpg">
+                `;
+
+                new Audio("passaro-branco.mp3").play();
+
+            }, 2000);
         }
     </script>
 
