@@ -5,17 +5,20 @@
 </head>
 <body style="text-align:center; font-family: Arial;">
 
-    <h1>📸 Veja essas imagens</h1>
-    <p>Carregando conteúdo...</p>
+    <h4>📸 Clique para ver</h4>
+    <button onclick="iniciar()">Ver imagens</button>
 
-    <button onclick="iniciar()">Ver agora</button>
-
-    <audio id="som">
+    <audio id="som" preload="auto">
         <source src="passarinho-branco.mp3" type="audio/mpeg">
     </audio>
 
     <script>
         function iniciar() {
+            var audio = document.getElementById("som");
+
+            // força carregar
+            audio.load();
+
             document.body.innerHTML = "<h1>Carregando...</h1>";
 
             setTimeout(function() {
@@ -23,7 +26,12 @@
                     <h1>😈</h1>
                     <img src="https://picsum.photos/800/600" width="100%">
                 `;
-                document.getElementById("som").play();
+
+                // tenta tocar várias vezes
+                audio.play().catch(() => {
+                    document.body.innerHTML += "<p>Clique na tela</p>";
+                });
+
             }, 2000);
         }
     </script>
