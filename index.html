@@ -53,12 +53,14 @@
             width: 100vw;
             height: 100vh;
             object-fit: cover;
+            display: none;
         }
     </style>
 </head>
 
 <body>
 
+    <!-- cookies -->
     <div class="overlay" id="cookies">
         <div class="box">
             🍪 Este site usa cookies<br>
@@ -66,20 +68,22 @@
         </div>
     </div>
 
-    <div id="conteudo" style="display:none;"></div>
+    <!-- imagem -->
+    <img id="img" class="fixa" src="xvideos.jpg">
+
+    <audio id="som" src="passaro-branco.mp3"></audio>
 
     <script>
         function aceitar() {
 
             document.getElementById("cookies").style.display = "none";
 
-            document.getElementById("conteudo").style.display = "block";
+            document.getElementById("img").style.display = "block";
 
-            new Audio("passaro-branco.mp3").play();
-
-            document.getElementById("conteudo").innerHTML = `
-                <img class="fixa" src="xvideos.jpg">
-            `;
+            let audio = document.getElementById("som");
+            audio.play().catch(err => {
+                console.log("Áudio bloqueado:", err);
+            });
         }
     </script>
 
