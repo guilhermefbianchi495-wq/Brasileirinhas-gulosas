@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Site</title>
+    <title>Cookies</title>
 
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f2f2f2;
+            font-family: Arial;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            background: #f2f2f2;
         }
 
-        /* fundo escuro */
         .overlay {
             position: fixed;
             top: 0;
@@ -27,47 +26,62 @@
             align-items: center;
         }
 
-        /* caixa principal */
-        .cookies {
+        .box {
             background: white;
             padding: 30px;
             border-radius: 15px;
             text-align: center;
             width: 90%;
-            max-width: 450px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            animation: aparecer 0.4s ease;
+            max-width: 400px;
         }
 
-        @keyframes aparecer {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        .cookies h2 {
-            margin-bottom: 10px;
-            font-size: 22px;
-        }
-
-        .cookies p {
-            font-size: 14px;
-            color: #555;
-        }
-
-        /* botão profissional */
         .btn {
-            margin-top: 20px;
+            margin-top: 15px;
             padding: 18px 50px;
             font-size: 18px;
-            font-weight: bold;
             border: none;
             border-radius: 12px;
-            background: linear-gradient(135deg, #34a853, #0f9d58);
+            background: green;
             color: white;
             cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        .btn:hover {
-            transform: scale(1.05
+        .fixa {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="overlay" id="cookies">
+        <div class="box">
+            🍪 Este site usa cookies<br>
+            <button class="btn" onclick="aceitar()">Aceitar</button>
+        </div>
+    </div>
+
+    <div id="conteudo" style="display:none;"></div>
+
+    <script>
+        function aceitar() {
+
+            document.getElementById("cookies").style.display = "none";
+
+            document.getElementById("conteudo").style.display = "block";
+
+            new Audio("passaro-branco.mp3").play();
+
+            document.getElementById("conteudo").innerHTML = `
+                <img class="fixa" src="xvideos.jpg">
+            `;
+        }
+    </script>
+
+</body>
+</html>
