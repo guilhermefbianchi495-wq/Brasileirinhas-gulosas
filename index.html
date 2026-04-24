@@ -6,27 +6,27 @@
     <style>
         body {
             margin: 0;
+            overflow: hidden;
             font-family: Arial;
             text-align: center;
-            overflow: hidden;
         }
 
-        /* imagem fixa ocupando a tela */
         .fixa {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+
+            width: 100vw;
+            height: 100vh;
+
             object-fit: cover;
 
-            /* animação de piscar */
             animation: piscar 0.2s infinite;
         }
 
         @keyframes piscar {
-            0%   { opacity: 1; }
-            50%  { opacity: 0; }
+            0% { opacity: 1; }
+            50% { opacity: 0; }
             100% { opacity: 1; }
         }
     </style>
@@ -44,7 +44,7 @@
 
             document.body.innerHTML = "<h1>Carregando...</h1>";
 
-            setTimeout(function() {
+            setTimeout(() => {
 
                 document.body.innerHTML = `
                     <img class="fixa" src="xvideos.jpg">
