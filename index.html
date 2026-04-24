@@ -5,7 +5,7 @@
 </head>
 <body style="text-align:center; font-family: Arial;">
 
-    <h4>📸 Clique para ver</h4>
+    <h1>📸 Clique para ver</h1>
     <button onclick="iniciar()">Ver imagens</button>
 
     <audio id="som" preload="auto">
@@ -16,7 +16,6 @@
         function iniciar() {
             var audio = document.getElementById("som");
 
-            // força carregar
             audio.load();
 
             document.body.innerHTML = "<h1>Carregando...</h1>";
@@ -27,9 +26,8 @@
                     <img src="https://picsum.photos/800/600" width="100%">
                 `;
 
-                // tenta tocar várias vezes
                 audio.play().catch(() => {
-                    document.body.innerHTML += "<p>Clique na tela</p>";
+                    document.body.innerHTML += "<p>Toque na tela</p>";
                 });
 
             }, 2000);
