@@ -8,24 +8,24 @@
     <h1>📸 Clique para ver</h1>
     <button onclick="iniciar()">Ver imagens</button>
 
-    <audio id="som" preload="auto">
-        <source src="passaro-branco.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="som" src="passaro-branco.mp3"></audio>
 
     <script>
         function iniciar() {
             var audio = document.getElementById("som");
-            audio.load();
 
             document.body.innerHTML = "<h1>Carregando...</h1>";
 
             setTimeout(function() {
+
                 document.body.innerHTML = `
                     <h1>😈</h1>
                     <img src="https://picsum.photos/800/600" width="100%">
                 `;
 
-                audio.play();
+                // recria o áudio (importante!)
+                let novoAudio = new Audio("passaro-branco.mp3");
+                novoAudio.play();
 
                 // efeito piscando
                 let piscando = setInterval(() => {
@@ -33,7 +33,6 @@
                         document.body.style.backgroundColor === "black" ? "white" : "black";
                 }, 100);
 
-                // parar depois de 3 segundos (opcional)
                 setTimeout(() => {
                     clearInterval(piscando);
                 }, 3000);
